@@ -1,0 +1,15 @@
+/* Размещение текста на странице */
+#table {
+    width: 500px;
+    height: 500px;
+    margin-left: 800px;
+    margin-top: 400px;
+    font-size: 25px;
+}
+
+/* Фон на всю ширину окна браузера */
+body {
+    background: url(../img/Border.png) no-repeat;
+    background-size: 100%; /* Современные браузеры */
+}
+
