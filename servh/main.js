@@ -10,17 +10,14 @@ const pool=mysql2.createPool({
 });
 
 const app = express();
-app.get('/style.css',function(req,res){
-	fs.readFile('./pages/style.css', function(err, contents) {
-		res.send(contents);
-		
-	});
-});
+
+app.use(express.static(__dirname + '/pages'));
+
+
 app.get('/register',function(req,res){
 	
 	fs.readFile('./pages/register_page.html', 'utf8', function(err, contents) {
-		res.send(contents);
-		
+		res.send(contents);                                                                                                                                                                              
 	});
 
 	console.log('after calling readFile');

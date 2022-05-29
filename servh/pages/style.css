@@ -9,7 +9,7 @@
 
 /* Фон на всю ширину окна браузера */
 body {
-/*    background: url(images/Border.png) no-repeat;*/
+   background: url(images/Border.png) no-repeat;
     background-size: 100%; /* Современные браузеры */
 }
 
