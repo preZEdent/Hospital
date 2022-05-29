@@ -31,7 +31,7 @@
       <div id="table">
         <form action="/reg" method="post">
         <p>Номер полиса ОМС</p>
-        <input style="width: 40%; height: 7%;" type="text" name="polis" placeholder="Ваше имя" id="polis"><br>
+        <input style="width: 40%; height: 7%;" type="text" name="polis" maxlength="16" placeholder="Введите номер полиса" id="polis"><br>
         <p>Пароль</p>
         <input style="width: 40%; height: 7%;" type="password" name="password1" placeholder="Ваш пароль" id="password1"><br>
         <p>Повторите ваш пароль</p>
@@ -48,6 +48,24 @@
       <p><button style="left: 15.8%;" class="new">Полезная информация</button></p>
     </div> 
 	<script language="JavaScript">
+		const input = document.getElementById('polis');
+		input.addEventListener('keydown', function(event) {
+				// Разрешаем: backspace, delete, tab и escape
+				if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 ||
+					// Разрешаем: Ctrl+A
+					(event.keyCode == 65 && event.ctrlKey === true) ||
+					// Разрешаем: home, end, влево, вправо
+					(event.keyCode >= 35 && event.keyCode <= 39)) {
+					
+					// Ничего не делаем
+					return;
+				} else {
+					// Запрещаем все, кроме цифр на основной клавиатуре, а так же Num-клавиатуре
+					if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
+						event.preventDefault();
+					}
+				}
+	});
 		function register() {	
 		var polis = document.getElementById("polis").value;
 		var password1 = document.getElementById("password1").value;

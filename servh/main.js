@@ -27,8 +27,14 @@ app.get('/register',function(req,res){
 
 app.post('/reg',function(req,res){
 	console.log(req.body);
+	const {polis,password1}= req.body;
 	if((req.body.password1 == req.body.password2)&&(req.body.password1.length !=0 )&&(req.body.password2.length !=0))
-	{
+	{	
+		pool.query('INSERT INTO patient SET ?', {
+			id_patient:polis, 
+			password:password1,
+		});
+		
 		fs.readFile('./pages/authorization_page.html', 'utf8', function(err, contents) {
 			res.send(contents);                                                                                                                                                                              
 		});
