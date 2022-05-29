@@ -29,14 +29,15 @@
     <body>
         <!-- Создание формы регистрации пользователя -->
       <div id="table">
-        <form action="" method="post"></form> 
+        <form action="/reg" method="post">
         <p>Номер полиса ОМС</p>
-        <input style="width: 40%; height: 7%;" type="text" name="name" placeholder="Ваше имя" id="name"><br>
+        <input style="width: 40%; height: 7%;" type="text" name="polis" placeholder="Ваше имя" id="polis"><br>
         <p>Пароль</p>
-        <input style="width: 40%; height: 7%;" type="password" name="password" placeholder="Ваш пароль" id="password"><br>
+        <input style="width: 40%; height: 7%;" type="password" name="password1" placeholder="Ваш пароль" id="password1"><br>
         <p>Повторите ваш пароль</p>
-        <input style="width: 40%; height: 7%;" type="password" name="password" placeholder="Ваш пароль" id="password"><br><br>
-        <button style="font-size: 80%;" type="submit">Зарегистрироваться</button><br>
+        <input style="width: 40%; height: 7%;" type="password" name="password2" placeholder="Ваш пароль" id="password2"><br><br>		 
+		<button style="font-size: 80%;" type="submit">Зарегистрироваться</button><br>		
+		 </form> 
     </div>
     <div>
       <form action="index.html">
@@ -46,5 +47,17 @@
     <div>
       <p><button style="left: 15.8%;" class="new">Полезная информация</button></p>
     </div> 
+	<script language="JavaScript">
+		function register() {	
+		var polis = document.getElementById("polis").value;
+		var password1 = document.getElementById("password1").value;
+		var password2 = document.getElementById("password2").value;
+		fetch('/reg').then(function(response) {
+		  return response.json();
+		}).then(function(data) {
+		  alert(data);   
+		})
+	   }
+	</script>
     </body>
 </html>

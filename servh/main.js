@@ -11,6 +11,10 @@ const pool=mysql2.createPool({
 
 const app = express();
 
+app.use(express.urlencoded({
+  extended: true
+}));
+
 app.use(express.static(__dirname + '/pages'));
 
 
@@ -19,8 +23,20 @@ app.get('/register',function(req,res){
 	fs.readFile('./pages/register_page.html', 'utf8', function(err, contents) {
 		res.send(contents);                                                                                                                                                                              
 	});
+});
 
-	console.log('after calling readFile');
+app.post('/reg',function(req,res){
+	console.log(req.body);
+	if((req.body.password1 == req.body.password2)&&(req.body.password1.length !=0 )&&(req.body.password2.length !=0))
+	{
+		fs.readFile('./pages/authorization_page.html', 'utf8', function(err, contents) {
+			res.send(contents);                                                                                                                                                                              
+		});
+		
+	}else{
+		res.send("пароли не совпадают");
+
+	}
 });
 
 app.listen(3000,function() {
